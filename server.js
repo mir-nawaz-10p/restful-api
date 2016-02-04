@@ -5,8 +5,11 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 
 // MongoDB
-mongoose.connect('mongodb://localhost/rest_test');
-
+mongoose.connect('mongodb://localhost/demo');
+var db = mongoose.connection;
+db.once('open', function() {
+  console.log("we're connected!");
+});
 // Express
 var app = express();
 app.use(bodyParser.urlencoded({ extended: true }));

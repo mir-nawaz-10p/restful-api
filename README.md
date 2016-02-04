@@ -13,3 +13,4 @@
 * https://github.com/baugarten/node-restful
 * nodejs
 * mongo
+* https://scotch.io/tutorials/using-mongoosejs-in-node-js-and-mongodb-applications

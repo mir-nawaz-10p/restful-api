@@ -7,7 +7,7 @@ var blogSchema = new Schema({
   title:  String,
   author: String,
   body:   String,
-  comments: [{ body: String, date: Date }],
+  comments: [{ body: String, date: { type: Date, default: Date.now } }],
   date: { type: Date, default: Date.now },
   hidden: Boolean,
   meta: {
