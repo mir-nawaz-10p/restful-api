@@ -2,18 +2,31 @@
 // Dependencies
 var express = require('express');
 var router = express.Router();
-
+var mongoose = require('mongoose');
 // Models
 var Product = require('../models/product');
 var Blog = require('../models/blog');
 var User = require('../models/users');
-
 // Routes
 Product.methods(['get', 'put', 'post', 'delete']);
 Product.register(router, '/products');
 Blog.methods(['get', 'put', 'post', 'delete']);
 Blog.register(router, '/blogs');
 User.methods(['get', 'put', 'post', 'delete']);
+User.route('recommend', function(req, res, next) {
+	User.find({}, function (err, docs) {
+  		if (err) next({ status: 404 });
+        res.send(docs);
+	});
+}); // custom route for the api / api/users/recommend
+User.before('get', function(req, res, next){
+	console.log('before get call');
+	next();
+});
+User.after('get', function(req, res, next){
+	console.log('after get call');
+	next();
+});
 User.register(router, '/users');
 
 ///////////////////////////////////////// 
