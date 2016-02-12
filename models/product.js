@@ -1,8 +1,8 @@
-
+'use strict';
 // Dependencies
-var restful = require('node-restful');
-var mongoose = restful.mongoose;
-var Schema = mongoose.Schema;
+const restful = require('node-restful');
+const mongoose = restful.mongoose;
+const Schema = mongoose.Schema;
 
 // Schema
 var productSchema = new Schema({

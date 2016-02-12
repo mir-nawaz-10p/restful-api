@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.9.0",
+    "chalk": "^1.1.1",
     "express": "^4.9.8",
     "mongoose": "^3.9.7",
     "node-restful": "^0.1.17"

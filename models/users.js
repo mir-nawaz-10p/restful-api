@@ -1,7 +1,8 @@
+'use strict';
 // Dependencies
-var restful = require('node-restful');
-var mongoose = restful.mongoose;
-var Schema = mongoose.Schema;
+const restful = require('node-restful');
+const mongoose = restful.mongoose;
+const Schema = mongoose.Schema;
 
 // create a schema
 var userSchema = new Schema({
@@ -15,7 +16,8 @@ var userSchema = new Schema({
     website: String
   },
   created_at: { type: Date, default: Date.now },
-  updated_at: { type: Date, default: Date.now }
+  updated_at: { type: Date, default: Date.now },
+  addresses: [{ type: Schema.ObjectId, ref: "Addresses" }]
 });
 // custom method to add string to end of name
 // you can create more important methods like name validations or formatting

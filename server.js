@@ -1,17 +1,17 @@
-
+'use strict';
 // Dependencies
-var express = require('express');
-var mongoose = require('mongoose');
-var bodyParser = require('body-parser');
-
+const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const chalk = require('chalk');
 // MongoDB
 mongoose.connect('mongodb://localhost/demo');
-var db = mongoose.connection;
+const db = mongoose.connection;
 db.once('open', function() {
-  console.log("we're connected!");
+  console.log(chalk.green("we're connected!"));
 });
 // Express
-var app = express();
+const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -20,4 +20,4 @@ app.use('/api', require('./routes/api'));
 
 // Start server
 app.listen(3000);
-console.log('API is running on port 3000');
+console.log(chalk.blue('API is running on port'), chalk.green('3000'));
