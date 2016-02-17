@@ -12,13 +12,9 @@ module.exports = {
 function signup(req, res) {
 	var user = new User(req.body);
 	user.save(function(err){
-		if (err) {
-			res.status(403);
-			res.send(err);
-		}
-		else{
-			addNewToken(req, res);
-		}
+		if (err)
+			return res.status(403).send(err);
+		addNewToken(req, res);
 	});
 }
 
@@ -28,13 +24,9 @@ function login(req, res){
 		password: req.body.password
 	};
 	User.findOne(query, function(err, doc){
-		if (!doc || err) {
-			res.status(403);
-			res.send(err || {message: 'Wrong username or password'});
-		}
-		else{
-			addNewToken(req, res);
-		}
+		if (!doc || err)
+			return res.status(403).send(err || {message: 'Wrong username or password'});
+		addNewToken(req, res);
 	});
 }
 
@@ -42,13 +34,9 @@ function logout(req, res){
 	var query = {token: req.headers.token, status: true};
 	var update = {status: false};
 	Token.findOneAndUpdate(query, update, function(err, doc) {
-		if(!doc || err){
-			res.status(403);
-			res.send(err || {message: "user's token or state not found"});	
-		}
-		else{
-			res.send({message: 'user logged out successfully'});	
-		}
+		if(!doc || err)
+			return res.status(403).send(err || {message: "user's token or state not found"});
+		res.send({message: 'user logged out successfully'});
 	});
 }
 
@@ -60,13 +48,9 @@ function addNewToken(req, res){
 				status: true
 			});
 		token.save(function(err){
-			if (err){
-				res.status(403);
-				res.send(err);
-			}
-			else{
-				res.send({token: token.token});
-			}
+			if (err)
+				return res.status(403).send(err);
+			res.send({token: token.token});
 		});
 }
 

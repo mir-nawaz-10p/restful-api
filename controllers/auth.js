@@ -12,9 +12,8 @@ function isAuthenticated(req, res, next) {
 		status: true
 	};
 	Token.findOne(query, function(err, doc){
-		if (!doc || err) {
-			next(res.status(403).send({message: "Forbidden access"}));
-		}
+		if (!doc || err)
+			return next(res.status(403).send({message: "Forbidden access"}));
 		next();
 	});			
 }
