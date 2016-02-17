@@ -9,7 +9,7 @@ var userSchema = new Schema({
   name: { type: String, required: true },
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  admin: Boolean,
+  admin: { type: Boolean, required: true },
   location: String,
   meta: {
     age: Number,
