@@ -5,8 +5,8 @@ const morgan = require('morgan');
 
 module.exports = function(app) {
 	// create a write stream (in append mode)
-	var logDirectory = __dirname + '/log';
-
+	var logDirectory = __dirname + '/../log';
+	
 	// ensure log directory exists
 	fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
 
