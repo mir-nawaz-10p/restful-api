@@ -20,8 +20,8 @@ function signup(req, res) {
 
 function login(req, res){
 	var query = {
-		username: req.body.username, 
-		password: req.body.password
+		username: req.query.username, 
+		password: req.query.password
 	};
 	User.findOne(query, function(err, doc){
 		if (!doc || err)
@@ -42,8 +42,8 @@ function logout(req, res){
 
 function addNewToken(req, res){
 	var token = new Token({
-				username: req.body.username,
-				password: req.body.password,
+				username: req.body.username || req.query.username,
+				password: req.body.password || req.query.password,
 				token: randomString(50, chars),
 				status: true
 			});

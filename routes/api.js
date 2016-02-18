@@ -40,7 +40,7 @@ User.after('get', auth.filterRes)
 User.register(router, '/users');
 
 router.post('/signup', user.signup);
-router.post('/login', user.login);
+router.get('/login', user.login);
 router.get('/logout', user.logout);
 // -------------------------------------------------
 
